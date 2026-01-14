@@ -4,15 +4,15 @@
         "version": "PTDL_v2",
         "update_url": "https:\/\/raw.githubusercontent.com\/NATroutter\/egg-hytale\/refs\/heads\/main\/egg-hytale.pterodactyl.json"
     },
-    "exported_at": "2026-01-14T02:45:29+02:00",
+    "exported_at": "2026-01-14T00:14:01+03:00",
     "name": "Hytale",
-    "author": "contact@natroutter.fi",
+    "author": "p_menta@aurorahosting.com.br",
     "description": "Hytale é um jogo sandbox em blocos que mistura construção criativa com aventura em estilo RPG. Explore mundos gerados proceduralmente, cheios de biomas únicos, masmorras e criaturas. Construa de casas simples a grandes castelos, crie itens e enfrente monstros. Crie conteúdo personalizado com ferramentas de modding integradas, hospede seus próprios servidores e molde a experiência com plugins e mods. Jogue sozinho ou com amigos em um mundo feito para criação e exploração.\r\n\r\nCréditos:\r\n- Feito por NATroutter\r\n- https:\/\/natroutter.fi\r\n- https:\/\/github.com\/NATroutter",
     "features": [
         "java_version"
     ],
     "docker_images": {
-        "Hytale": "ghcr.io\/natroutter\/egg-hytale:latest"
+        "Hytale": "ghcr.io\/p-menta\/egg-hytale:latest"
     },
     "file_denylist": [],
     "startup": ".\/start.sh",
