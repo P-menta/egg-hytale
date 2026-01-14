@@ -1,113 +1,109 @@
-# Hytale Server Egg
+# Hytale Server Egg — fork apenas de tradução (PT-BR)
 
 ![GitHub License](https://img.shields.io/github/license/NATroutter/egg-hytale?style=for-the-badge) ![GitHub Issues](https://img.shields.io/github/issues/NATroutter/egg-hytale?style=for-the-badge)
 ![GitHub Stars](https://img.shields.io/github/stars/NATroutter/egg-hytale?style=for-the-badge) ![GitHub Forks](https://img.shields.io/github/forks/NATroutter/egg-hytale?style=for-the-badge)
 
-Panel eggs for hosting Hytale game servers on both Pelican and Pterodactyl panels.
+Eggs de painel para hospedar servidores do jogo Hytale tanto no Pelican quanto no Pterodactyl.
 
-## Overview
+## Visão geral
 
-This egg provides an automated installation and startup configuration for Hytale servers. It handles downloading the Hytale server files, setting up the environment, and starting the server with customizable parameters.
+Este egg fornece instalação e inicialização automatizadas para servidores Hytale. Ele baixa os arquivos do servidor, prepara o ambiente e inicia o servidor com parâmetros personalizáveis.
 
-Both Pelican Panel and Pterodactyl Panel are fully supported with dedicated egg files for each platform.
+Tanto o Pelican Panel quanto o Pterodactyl Panel são suportados, com arquivos de egg dedicados para cada plataforma.
 
-## Features
+## Recursos
 
-- Automated Hytale server installation
-- Automatic download of server files from official sources
-- Configurable server parameters
-- Easy setup and deployment
-- Support for custom asset packs
-- Backup management
-- Multiple authentication modes
+- Instalação automatizada do servidor Hytale
+- Download automático dos arquivos do servidor a partir de fontes oficiais
+- Parâmetros do servidor configuráveis
+- Setup e deploy simplificados
+- Suporte a pacotes de assets personalizados
+- Gerenciamento de backups
+- Múltiplos modos de autenticação
 
-## Installation
-
-### Pelican Panel
-
-1. Download the [egg-hytale.pelican.json](egg-hytale.pelican.json) file from this repository
-2. In your Pelican Panel, navigate to **Admin Panel** > **Eggs**
-3. Click **Import**
-4. Select the downloaded JSON file and click **Submit**
-
-### Pterodactyl Panel
-
-1. Download the [egg-hytale.pterodactyl.json](egg-hytale.pterodactyl.json) file from this repository
-2. In your Pterodactyl Panel, navigate to **Admin Panel** > **Nests**
-3. Select or create a nest for the egg
-4. Click **Import Egg**
-5. Select the downloaded JSON file and click **import**
-
-## Updating the Egg
-
-When a new version of the egg is released, follow these steps to update:
+## Instalação
 
 ### Pelican Panel
 
-1. Download the latest [egg-hytale.pelican.json](egg-hytale.pelican.json) file from this repository
-2. In your Pelican Panel, navigate to **Admin Panel** > **Eggs**
-3. Click the "Hytale" egg from the list
-4. Click **Import** on top right and select the downloaded JSON file
+1. Baixe o arquivo [egg-hytale.pelican.json](egg-hytale.pelican.json) deste repositório
+2. No Pelican Panel, vá em **Admin Panel** > **Eggs**
+3. Clique em **Import**
+4. Selecione o arquivo JSON baixado e clique em **Submit**
 
 ### Pterodactyl Panel
 
-1. Download the latest [egg-hytale.pterodactyl.json](egg-hytale.pterodactyl.json) file from this repository
-2. In your Pterodactyl Panel, navigate to **Admin Panel** > **Nests**
-3. Click on the nest where hytale egg is imported
-4. Click on the hytale egg to open it
-5. On top of the page there update egg section where you can select the new egg Click **Update Egg**
+1. Baixe o arquivo [egg-hytale.pterodactyl.json](egg-hytale.pterodactyl.json) deste repositório
+2. No Pterodactyl Panel, vá em **Admin Panel** > **Nests**
+3. Selecione ou crie um nest para o egg
+4. Clique em **Import Egg**
+5. Selecione o arquivo JSON baixado e clique em **Import**
 
-## Server Configuration
+## Atualizando o egg
 
-The following options can be configured:
+Quando uma nova versão do egg for lançada, siga os passos abaixo para atualizar:
 
-| Option | Description | Default |
+### Pelican Panel
+
+1. Baixe a versão mais recente do [egg-hytale.pelican.json](egg-hytale.pelican.json) deste repositório
+2. No Pelican Panel, vá em **Admin Panel** > **Eggs**
+3. Clique no egg "Hytale" na lista
+4. Clique em **Import** (canto superior direito) e selecione o arquivo JSON baixado
+
+### Pterodactyl Panel
+
+1. Baixe a versão mais recente do [egg-hytale.pterodactyl.json](egg-hytale.pterodactyl.json) deste repositório
+2. No Pterodactyl Panel, vá em **Admin Panel** > **Nests**
+3. Clique no nest onde o egg do Hytale foi importado
+4. Clique no egg do Hytale para abri-lo
+5. No topo da página, na seção de atualização do egg, selecione o novo arquivo e clique em **Update Egg**
+
+## Configuração do servidor
+
+As seguintes opções podem ser configuradas:
+
+| Opção | Descrição | Padrão |
 | ---------- | ------------- | --------- |
-| `Game Profile (username)` | Hytale profile username for server authentication. Visit [accounts.hytale.com](https://accounts.hytale.com/) → Game Profiles to find your username. Leave empty to use first profile. | (empty) |
-| `Asset Pack` | Assets pack (.zip) that are being send to player | `Assets.zip` |
-| `Accept Early Plugins` | Acknowledge that loading early plugins is unsupported and may cause stability issues | `false` |
-| `Allow Operators` | Do you wish to allow operators or not | `true` |
-| `Auth Mode` | Authentication mode (authenticated or offline) | `authenticated` |
-| `Automatic Update` | Update the hytale server automatically | `true` |
-| `JVM Arguments` | Additional Java Virtual Machine arguments for advanced configuration. | See egg config |
-| `Leverage Ahead-Of-Time Cache` | The server ships with a pre-trained AOT cache (HytaleServer.aot) that improves boot times by skipping JIT warmup | `true` |
-| `Disable Sentry Crash Reporting` | Disable Sentry during active plugin development. Hytale uses Sentry to track crashes. Disable it to avoid submitting your development errors | `true` |
-| `Enable Backups` | Enable automatic backups | `false` |
-| `Backup Frequency` | Backup interval in minutes | `30` |
-| `Patchline` | What release channel you want to use | `release` |
-| `Memory overhead` | The amount of RAM (in MB) kept aside for the system so the server doesn’t use everything. Java will get the rest. | `0` |
+| `Perfil do Jogo (usuário)` | Username do perfil Hytale para autenticação do servidor. Visite [accounts.hytale.com](https://accounts.hytale.com/) → Game Profiles para encontrar seu username. Deixe vazio para usar o primeiro/perfil padrão. | (vazio) |
+| `Pacote de Assets` | Pacote de assets (.zip) que será enviado aos jogadores | `Assets.zip` |
+| `Aceitar Plugins Antecipados` | Confirma que carregar plugins antecipados não é suportado e pode causar instabilidade | `false` |
+| `Permitir Operadores` | Define se operadores (ops) são permitidos | `true` |
+| `Modo de Autenticação` | Modo de autenticação (authenticated ou offline) | `authenticated` |
+| `Atualização Automática` | Atualiza o servidor Hytale automaticamente | `true` |
+| `Argumentos da JVM` | Argumentos adicionais da JVM para configuração avançada. | Ver config do egg |
+| `Usar Cache Ahead-Of-Time (AOT)` | O servidor inclui um cache AOT (HytaleServer.aot) que melhora o boot ao pular o aquecimento do JIT | `true` |
+| `Desativar Relatório de Falhas (Sentry)` | Desative o Sentry durante o desenvolvimento ativo de plugins para evitar enviar erros do seu ambiente | `true` |
+| `Ativar Backups` | Ativa backups automáticos | `false` |
+| `Frequência de Backup` | Intervalo de backup em minutos | `30` |
+| `Canal de Versão` | Qual canal de lançamento você quer usar | `release` |
+| `Reserva de Memória` | Quantidade de RAM (em MB) reservada para o sistema, para o servidor não consumir tudo. O Java usará o restante. | `0` |
 
-### First-Time Authentication
+### Autenticação na primeira execução
 
-During the first start, the Hytale downloader will require authentication with your Hytale account. You'll see output similar to this in the console:
+Na primeira inicialização, o Hytale downloader vai pedir autenticação com sua conta Hytale. Você verá uma mensagem/bandeira pedindo para abrir uma URL (ela é única para você) parecida com esta:
 
 ```txt
-Please visit the following URL to authenticate:
+Autentique o servidor acessando a seguinte URL:
 https://oauth.accounts.hytale.com/oauth2/device/verify?user_code=XXXXXXXX
-Or visit the following URL and enter the code:
-https://oauth.accounts.hytale.com/oauth2/device/verify
-Authorization code: XXXXXXXX
 ```
 
-**To complete authentication:**
+**Para concluir a autenticação:**
 
-1. Open the provided URL in your web browser
-2. Enter the authorization code shown in the console
-3. Sign in with your Hytale account credentials
-4. Authorize the server to download game files
-5. Return to the console - the download will continue automatically
+1. Abra a URL fornecida no seu navegador
+2. Entre com sua conta Hytale
+3. Autorize o servidor
+4. Volte ao console — o download continuará automaticamente
 
-This authentication step is only required during initial setup. Subsequent server starts will not require re-authentication.
+Essa etapa de autenticação é necessária apenas na configuração inicial. Nas próximas inicializações, não deve ser necessário autenticar novamente (desde que o cache de token esteja válido).
 
-## License
+## Licença
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Este projeto é licenciado sob a licença MIT — veja o arquivo LICENSE para mais detalhes.
 
-## Acknowledgments
+## Agradecimentos
 
-- Hytale team for the game and server software
-- Pelican Panel and Pterodactyl Panel for the hosting platforms
-- Community contributors
+- Equipe do Hytale pelo jogo e software do servidor
+- Pelican Panel e Pterodactyl Panel pelas plataformas de hospedagem
+- Contribuidores da comunidade
 
 ## Links
 
@@ -116,13 +112,13 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Pterodactyl Panel](https://pterodactyl.io/)
 - [Report Issues](https://github.com/NATroutter/egg-hytale/issues)
 
-## Support
+## Suporte
 
-If you encounter any issues or have questions:
+Se você tiver problemas ou dúvidas:
 
-- Check existing issues for solutions
-- Open an issue on GitHub
+- Verifique as issues existentes para possíveis soluções
+- Abra uma issue no GitHub
 
 ---
 
-**Note**: This is an unofficial community-created egg and is not officially supported by Hypixel Studios or the Hytale team.
+**Nota**: este é um egg não oficial, criado pela comunidade, e não possui suporte oficial da Hypixel Studios ou da equipe do Hytale.

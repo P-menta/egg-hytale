@@ -2,30 +2,30 @@ FROM --platform=$TARGETOS/$TARGETARCH ghcr.io/parkervcp/yolks:java_25
 
 LABEL author="NATroutter" maintainer="contact@natroutter.fi"
 LABEL org.opencontainers.image.source="https://github.com/NATroutter/egg-hytale"
-LABEL org.opencontainers.image.description="Container for running hytale game servers"
+LABEL org.opencontainers.image.description="Container para executar servidores do jogo Hytale"
 LABEL org.opencontainers.image.licenses=MIT
 
-# Work as root for setup
+# Trabalhar como root para o setup
 USER root
 
-# Copy Pterodactyl entrypoint
+# Copia o entrypoint do Pterodactyl
 COPY --from=ghcr.io/parkervcp/yolks:java_25 --chmod=755 /entrypoint.sh /entrypoint.sh
 
-# Install dependencies
+# Instala dependências
 RUN apt update -y && apt install -y unzip jq curl && rm -rf /var/lib/apt/lists/*
 
-# Copy entry.sh as root-owned (so container user can't modify it)
+# Copia o entry.sh como root (para o usuário do container não conseguir modificá-lo)
 COPY --chmod=755 ./entry.sh /entry.sh
 RUN sed -i 's/\r$//' /entry.sh
 
-# Copy start.sh to /usr/local/bin (protected location, won't be overridden by volume mounts)
+# Copia o start.sh para /usr/local/bin (local protegido; não será sobrescrito por mounts de volume)
 COPY --chmod=755 ./start.sh /usr/local/bin/start.sh
 RUN sed -i 's/\r$//' /usr/local/bin/start.sh
 
-# Switch to container user ONLY for runtime
+# Troca para o usuário do container APENAS em runtime
 USER container
 ENV USER=container HOME=/home/container
 WORKDIR /home/container
 
-#Start the container
+# Inicia o container
 CMD ["/bin/bash", "/entry.sh"]
